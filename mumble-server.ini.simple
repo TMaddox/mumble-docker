@@ -1,0 +1,59 @@
+# Murmur configuration file.
+#
+# General notes:
+# * Settings in this file are default settings and many of them can be overridden
+#   with virtual server specific configuration via the Ice or DBus interface.
+# * Due to the way this configuration file is read some rules have to be
+#   followed when specifying variable values (as in variable = value):
+#     * Make sure to quote the value when using commas in strings or passwords.
+#        NOT variable = super,secret BUT variable = "super,secret"
+#     * Make sure to escape special characters like '\' or '"' correctly
+#        NOT variable = """ BUT variable = "\""
+#        NOT regex = \w* BUT regex = \\w*
+
+# Path to database. If blank, will search for
+# murmur.sqlite in default locations or create it if not found.
+database=/var/lib/mumble-server/mumble-server.sqlite
+
+# Specifies the file Murmur should log to. By default, Murmur
+# logs to the file 'murmur.log'. If you leave this field blank
+# on Unix-like systems, Murmur will force itself into foreground
+# mode which logs to the console.
+logfile=/var/log/mumble-server/mumble-server.log
+
+# If set, Murmur will write its process ID to this file
+# when running in daemon mode (when the -fg flag is not
+# specified on the command line). Only available on
+# Unix-like systems.
+pidfile=/var/run/mumble-server/mumble-server.pid
+
+# The below will be used as defaults for new configured servers.
+# If you're just running one server (the default), it's easier to
+# configure it here than through D-Bus or Ice.
+#
+# Welcome message sent to clients when they connect.
+welcometext="<br />Welcome to this server running <b>Murmur</b>.<br />Enjoy your stay!<br />"
+
+# Port to bind TCP and UDP sockets to.
+port=64738
+
+# Password to join server.
+serverpassword=
+
+# Maximum bandwidth (in bits per second) clients are allowed
+# to send speech at.
+bandwidth=72000
+
+# Maximum number of concurrent clients allowed.
+users=100
+
+# If this option is enabled, the server will announce its presence via the 
+# bonjour service discovery protocol. To change the name announced by bonjour
+# adjust the registerName variable.
+# See http://developer.apple.com/networking/bonjour/index.html for more information
+# about bonjour.
+bonjour=False
+
+# If Murmur is started as root, which user should it switch to?
+# This option is ignored if Murmur isn't started with root privileges.
+uname=mumble-server
