@@ -15,6 +15,6 @@ $ docker build -t murmur .
 $ docker run --name mumble-server -p <host_port>:64738 murmur
 ```
 
-I have an example systemd service definition [here!](https://github.com/TMaddox/rcfiles/blob/master/mumble.service.2)
+I have an example systemd service definition [here](https://github.com/TMaddox/rcfiles/blob/master/mumble.service.2)!
 
 Good luck!
