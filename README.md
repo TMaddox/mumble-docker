@@ -1,0 +1,18 @@
+Mumble server Dockerfile and configuration
+
+# How to use:
+```bash
+$ cp mumble-server.ini.example mumble-server.ini
+```
+
+Now modify any values you want in the configuration. I highly recommend setting a server password by changing the `serverpassword` attribute. :)
+
+```bash
+$ docker build -t murmur .
+...
+$ docker run --name mumble-server -p <host_port>:64738 murmur
+```
+
+Example systemd service definition: https://github.com/TMaddox/rcfiles/blob/master/mumble.service.2
+
+Good luck!
