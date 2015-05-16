@@ -1,12 +1,12 @@
+# mumble-docker
+
 Mumble server Dockerfile and configuration
 
-# How to use:
+# How to use
 ```bash
 $ cp mumble-server.ini.example mumble-server.ini
 ```
-
-Now modify any values you want in the configuration. I highly recommend setting a server password by changing the `serverpassword` attribute. :)
-
+Now modify any values you want in the `mumble-server.ini` configuration file. I highly recommend setting a server password by changing the `serverpassword` attribute. :)
 ```bash
 $ docker build -t murmur .
 ...
