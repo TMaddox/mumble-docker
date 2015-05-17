@@ -6,7 +6,7 @@ Mumble server Dockerfile and configuration
 ```bash
 $ git clone git@github.com:TMaddox/mumble-docker.git
 $ cd mumble-docker
-$ cp mumble-server.ini.example mumble-server.ini
+$ cp mumble-server.ini.default mumble-server.ini
 ```
 Now modify any values you want in the `mumble-server.ini` configuration file. I highly recommend setting a server password by changing the `serverpassword` attribute. :)
 ```bash
