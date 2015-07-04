@@ -13,7 +13,7 @@ There are two example configuration files in this repository, if you don't alrea
 
 
 ```bash
-$ docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 'cat > ./mumble-server.ini' < mumble-server-prod.ini/mumble-server.ini
+$ docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 'cat > ./mumble-server.ini' < ./mumble-server.ini
 ```
 
 Once that's done, you can start the service like so:
