@@ -22,6 +22,10 @@ Once that's done, you can start the service like so:
 $ docker run --restart always --name mumble-server --volumes-from mumble-conf -p $DESIRED_HOST_PORT:64738 tmaddox/murmur:1.0
 ```
 
-If you're wanting to use systemd to manage the service, I have an example systemd service definition [here](https://github.com/TMaddox/rcfiles/blob/master/mumble.service.2)! Might want to leave off the `--restart always` if you're going to be managing the service with systemd. Otherwise, it may clash between systemd trying to restart the container and Docker trying to. :)
+## Using systemd
 
-Sl·inte! :beers:
+If you're wanting to use systemd to manage the service, I have an example systemd service definition [here](https://github.com/TMaddox/rcfiles/blob/master/mumble.service.2)!
+
+You will probably want to leave off the `--restart always` if you're going to be managing the service with systemd. Otherwise, it may clash between systemd trying to restart the container and Docker trying to. :smile:
+
+Sl√°inte! :beers:
