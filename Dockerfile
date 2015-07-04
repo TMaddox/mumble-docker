@@ -7,12 +7,10 @@ MAINTAINER Thomas Maddox <thomas.e.maddox@gmail.com>
 
 RUN apt-get update
 RUN apt-get install -y mumble-server
-RUN useradd --create-home -d /mumble-conf --system --shell /sbin/nologin \
-    --comment "Account to run murmurd." --user-group mumble
 
-WORKDIR /mumble-conf
-VOLUME /mumble-conf
+VOLUME /var/lib/mumble-server
+WORKDIR /var/lib/mumble-server
 
-USER mumble
-ENTRYPOINT ["/usr/sbin/murmurd", "-ini", "/mumble-conf/mumble-server.ini"]
+USER mumble-server
+ENTRYPOINT ["/usr/sbin/murmurd", "-ini", "/var/lib/mumble-server/mumble-server.ini"]
 CMD ["-fg", "-v"]
