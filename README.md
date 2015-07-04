@@ -32,4 +32,22 @@ For example, here's how you can set your `SuperUser` password on your running Mu
 $ docker run -i --rm --volumes-from mumble-conf murmur:1.0 -supw secret_to_guard_the_precious
 ```
 
+## Migrating existing Mumble server
+
+In order to migrate from an existing server, you'll need a copy of the source server's SQLite database file (usually found at `/var/lib/mumble-server/mumble-server.sqlite`). Once you have that, place it and your `mumble-server.ini` in a directory together.
+
+For example, I have a directory `mumble-server-conf` with both a `mumble-servver.ini` and a `mumble-server.sqlite` from an old mumble-server deploy:
+
+```bash
+$ tar cv mumble-server-conf/* | docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 'tar x'
+```
+
+This created my `mumble-conf` data container, created an archive via `tar cv mumble-server-conf/*`, and then piped it through STDIN to be extracted inside `mumble-conf`'s working directory (`/var/lib/mumble-server`).
+
+Now, I can just start the server like normal, but this time it's using the `mumble-conf` data container and the generic `tmaddox/murmur:1.0` image. :smile:
+
+```bash
+$ docker run -d --restart always --name mumble-server --volumes-from mumble-conf -p $DESIRED_HOST_PORT:64738 tmaddox/murmur:1.0
+```
+
 Sláinte! :beers:
