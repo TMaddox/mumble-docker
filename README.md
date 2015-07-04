@@ -19,7 +19,17 @@ $ docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 
 Once that's done, you can start the service like so:
 
 ```bash
-$ docker run --restart always --name mumble-server --volumes-from mumble-conf -p $DESIRED_HOST_PORT:64738 tmaddox/murmur:1.0
+$ docker run -d --restart always --name mumble-server --volumes-from mumble-conf -p $DESIRED_HOST_PORT:64738 tmaddox/murmur:1.0
+```
+
+## Configure while running
+
+Because the volume used in this image (`/var/lib/mumble-server`) includes the Mumble database that persists things like your superuser password, channel configurations, access controls, etc., you can run commands against the Mumble binary that will make updates to this database for your running server.
+
+For example, here's how you can set your `SuperUser` password on your running Mumble server.
+
+```bash
+$ docker run -i --rm --volumes-from mumble-conf murmur:1.0 -supw secret_to_guard_the_precious
 ```
 
 Sláinte! :beers:
