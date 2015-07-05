@@ -39,10 +39,19 @@ In order to migrate from an existing server, you'll need a copy of the source se
 For example, I have a directory `mumble-server-conf` with both a `mumble-servver.ini` and a `mumble-server.sqlite` from an old mumble-server deploy:
 
 ```bash
-$ tar cv mumble-server-conf/* | docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 'tar x'
+$ tar -cv mumble-server-conf/* | docker run -i --name mumble-conf --entrypoint /bin/bash tmaddox/murmur:1.0 -c 'tar -xv'
 ```
 
 This created my `mumble-conf` data container, created an archive via `tar cv mumble-server-conf/*`, and then piped it through STDIN to be extracted inside `mumble-conf`'s working directory (`/var/lib/mumble-server`).
+
+If it worked properly you should see output like the following:
+
+```
+mumble-server.ini
+mumble-server.sqlite
+mumble-server.ini
+mumble-server.sqlite
+```
 
 Now, I can just start the server like normal, but this time it's using the `mumble-conf` data container and the generic `tmaddox/murmur:1.0` image. :smile:
 
